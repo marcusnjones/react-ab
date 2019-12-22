@@ -1,0 +1,29 @@
+{
+  "name": "react-ab-api",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcusnjones/react-ab.git"
+  },
+  "keywords": [
+    "node",
+    "express"
+  ],
+  "author": {
+    "name": "Marcus N. Jones",
+    "email": "marcusnjones@gmail.com",
+    "url": "https://www.linkedin.com/in/marcusnjones/"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcusnjones/react-ab/issues"
+  },
+  "homepage": "https://github.com/marcusnjones/react-ab#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

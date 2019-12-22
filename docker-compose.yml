@@ -1,0 +1,43 @@
+version: '3.7'
+
+services:
+  ui:
+    build: ./ui
+    restart: always
+    networks:
+      - react-ab-network
+
+  api:
+    image: "node:12"
+    restart: on-failure
+    user: "node"
+    working_dir: /home/node/app
+    env_file: ./api/node.env
+    volumes:
+      - ./api/src:/home/node/app
+    expose:
+      - "8081"
+    command: "npm start"
+    networks:
+      - react-ab-network
+
+  mongo:
+    image: mongo
+    restart: always
+    env_file: ./db/mongo.env
+    networks:
+      - react-ab-network
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    env_file: ./db/mongo-express.env
+    depends_on: [mongo]
+    networks:
+      - react-ab-network
+
+networks:
+  react-ab-network:
+    name: react-ab-network
