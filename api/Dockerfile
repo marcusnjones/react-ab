@@ -2,7 +2,7 @@ FROM node:12
 
 WORKDIR /home/node/app
 
-COPY package*.json ./
+COPY ./src/package*.json ./
 
 RUN npm install
 # If you are building your code for production
