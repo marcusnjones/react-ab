@@ -4,6 +4,11 @@ services:
   ui:
     build: ./ui
     restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./ui/src:/home/node/app/src
+      - ./ui/public:/home/node/app/public
     networks:
       - react-ab-network
 
