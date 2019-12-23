@@ -13,16 +13,14 @@ services:
       - react-ab-network
 
   api:
-    image: "node:12"
-    restart: on-failure
-    user: "node"
-    working_dir: /home/node/app
+    build: ./api
+    restart: always
     env_file: ./api/node.env
     volumes:
       - ./api/src:/home/node/app
-    expose:
-      - "8081"
-    command: "npm start"
+      - /home/node/app/node_modules/
+    ports:
+      - "8080:8080"
     networks:
       - react-ab-network
 
