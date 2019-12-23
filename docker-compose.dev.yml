@@ -14,8 +14,9 @@ services:
 
   api:
     build: ./api
+    command: npm run-script development
     restart: always
-    env_file: ./api/node.env
+    env_file: ./api/node.dev.env
     volumes:
       - ./api/src:/home/node/app
       - /home/node/app/node_modules/
