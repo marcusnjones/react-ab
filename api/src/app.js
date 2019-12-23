@@ -1,14 +1,10 @@
 const express = require('express');
 const app = express();
 
-const entriesRoutes = require('./routes/entries');
+const entry = require('./routes/entry');
+const entries = require('./routes/entries');
 
-app.use('/entries', entriesRoutes);
-
-// app.use((req, res, next) => {
-//     res.status(200).json({
-//         message: 'It works!'
-//     });
-// });
+app.use('/entry', entry);
+app.use('/entries', entries);
 
 module.exports = app;
