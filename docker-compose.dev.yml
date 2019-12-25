@@ -3,7 +3,7 @@ version: '3.7'
 services:
   ui:
     build: ./ui
-    restart: always
+    restart: 'no'
     ports:
       - "3000:3000"
     volumes:
@@ -15,8 +15,9 @@ services:
   api:
     build: ./api
     command: npm run-script development
-    restart: always
+    restart: 'no'
     env_file: ./api/node.dev.env
+    depends_on: [mongo]
     volumes:
       - ./api/src:/home/node/app
       - /home/node/app/node_modules/
@@ -27,17 +28,19 @@ services:
 
   mongo:
     image: mongo
-    restart: always
-    env_file: ./db/mongo.env
+    restart: 'no'
+    env_file: ./db/mongo.dev.env
+    expose:
+      - "27017"
     networks:
       - react-ab-network
 
   mongo-express:
     image: mongo-express
-    restart: always
+    restart: 'no'
     ports:
       - 8081:8081
-    env_file: ./db/mongo-express.env
+    env_file: ./db/mongo.dev.env
     depends_on: [mongo]
     networks:
       - react-ab-network
