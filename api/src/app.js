@@ -15,7 +15,7 @@ MongoClient.connect(mongoUrl, function(err, client) {
     const db = client.db(dbName);
 
     client.close();
-  });
+});
 
 const entry = require('./routes/entry');
 const entries = require('./routes/entries');

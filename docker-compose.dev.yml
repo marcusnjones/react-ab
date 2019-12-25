@@ -14,12 +14,12 @@ services:
 
   api:
     build: ./api
-    command: npm run-script development
+    command: bash -c "/home/node/app/wait-for-it.sh --timeout=0 mongo:27017 && npm run-script development"
     restart: 'no'
     env_file: ./api/node.dev.env
     depends_on: [mongo]
     volumes:
-      - ./api/src:/home/node/app
+      - ./api/src:/home/node/app/src
       - /home/node/app/node_modules/
     ports:
       - "8080:8080"
