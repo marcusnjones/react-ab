@@ -20,7 +20,7 @@ services:
     depends_on: [mongo]
     volumes:
       - ./api/src:/home/node/app/src
-      - /home/node/app/node_modules/
+      - /home/node/app/src/node_modules/
     ports:
       - "8080:8080"
     networks:
