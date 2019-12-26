@@ -4,8 +4,9 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
+const Entry = require('./models/entry');
+
 const mongoUrl = `mongodb://${process.env.MONGO_SERVICENAME}:${process.env.MONGO_PORT}/${process.env.APP_DB_NAME}`;
-const dbName = process.env.APP_DB_NAME;
 
 mongoose.connect(mongoUrl, {
     useNewUrlParser: true,
@@ -15,7 +16,12 @@ mongoose.connect(mongoUrl, {
 const entry = require('./routes/entry');
 const entries = require('./routes/entries');
 
-// TODO: Configure morgan based on env
+if (app.get('env') == 'production') {
+    app.use(morgan('common', { skip: function (req, res) { return res.statusCode < 400 }, stream: __dirname + '/../morgan.log' }));
+} else {
+    app.use(morgan('dev'));
+}
+
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
