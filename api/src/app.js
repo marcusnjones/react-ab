@@ -3,18 +3,21 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-
-const Entry = require('./models/entry');
-
-const mongoUrl = `mongodb://${process.env.MONGO_SERVICENAME}:${process.env.MONGO_PORT}/${process.env.APP_DB_NAME}`;
+const mongoUrl = `mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.env.MONGO_INITDB_ROOT_PASSWORD}@${process.env.MONGO_SERVICENAME}:${process.env.MONGO_PORT}`;
+// const mongoUrl = `mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.env.MONGO_INITDB_ROOT_PASSWORD}@${process.env.MONGO_SERVICENAME}:${process.env.MONGO_PORT}/${process.env.MONGO_INITDB_DATABASE}`;
 
 mongoose.connect(mongoUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
 
-const entry = require('./routes/entry');
-const entries = require('./routes/entries');
+const Entry = require('./models/entry');
+const Seeder = require('./seed/seeder');
+
+Seeder.seed();
+
+const entryRoutes = require('./routes/entry');
+const entriesRoutes = require('./routes/entries');
 
 if (app.get('env') == 'production') {
     app.use(morgan('common', { skip: function (req, res) { return res.statusCode < 400 }, stream: __dirname + '/../morgan.log' }));
@@ -35,8 +38,8 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/api/entry', entry);
-app.use('/api/entries', entries);
+app.use('/api/entry', entryRoutes);
+app.use('/api/entries', entriesRoutes);
 
 app.use((req, res, next) => {
     const error = new Error('Not found!');
