@@ -1,49 +1,49 @@
 version: '3.7'
 
 services:
-  ui:
-    build: ./ui
-    restart: 'no'
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./ui/src:/home/node/app/src
-      - ./ui/public:/home/node/app/public
-    networks:
-      - react-ab-network
-
   api:
     build: ./api
     command: bash -c "/home/node/app/wait-for-it.sh --timeout=0 mongo:27017 && npm run-script development"
-    restart: 'no'
-    env_file: ./dev.env
     depends_on: [mongo]
+    env_file: ./dev.env
+    networks:
+      - react-ab-network
+    ports:
+      - "8080:8080"
+    restart: 'no'
     volumes:
       - ./api/src:/home/node/app/src
       - /home/node/app/src/node_modules/
-    ports:
-      - "8080:8080"
-    networks:
-      - react-ab-network
 
   mongo:
-    image: mongo
-    restart: 'no'
     env_file: ./dev.env
     expose:
       - "27017"
+    image: mongo
     networks:
       - react-ab-network
+    restart: 'no'
 
   mongo-express:
+    depends_on: [mongo]
+    env_file: ./dev.env
     image: mongo-express
-    restart: 'no'
     ports:
       - 8081:8081
-    env_file: ./dev.env
-    depends_on: [mongo]
     networks:
       - react-ab-network
+    restart: 'no'
+
+  ui:
+    build: ./ui
+    ports:
+      - "3000:3000"
+    networks:
+      - react-ab-network
+    restart: 'no'
+    volumes:
+      - ./ui/src:/home/node/app/src
+      - ./ui/public:/home/node/app/public
 
 networks:
   react-ab-network:

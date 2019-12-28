@@ -20,7 +20,8 @@ const entryRoutes = require('./routes/entry');
 const entriesRoutes = require('./routes/entries');
 
 if (app.get('env') == 'production') {
-    app.use(morgan('common', { skip: function (req, res) { return res.statusCode < 400 }, stream: __dirname + '/../morgan.log' }));
+    app.use(morgan('common'));
+    // app.use(morgan('common', { skip: function (req, res) { return res.statusCode < 400 }, stream: __dirname + '/../morgan.log' }));
 } else {
     app.use(morgan('dev'));
 }
