@@ -3,13 +3,14 @@ version: '3.7'
 services:
   api:
     build: ./api
-    command: bash -c "/home/node/app/wait-for-it.sh --timeout=0 mongo:27017 && npm run-script development"
+    command: bash -c "/home/node/app/wait-for-it.sh --timeout=0 mongo:27017 && npm run-script dev"
     depends_on: [mongo]
     env_file: ./dev.env
     networks:
       - react-ab-network
     ports:
       - "8080:8080"
+      - "9229:9229"
     restart: 'no'
     volumes:
       - ./api/src:/home/node/app/src
