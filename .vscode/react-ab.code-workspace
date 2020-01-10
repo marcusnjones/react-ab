@@ -1,0 +1,9 @@
+{
+	"folders": [
+		{
+			// Replace the * with the path to your react-ab folder
+			"path": "*/react-ab"
+		}
+	],
+	"settings": {}
+}
