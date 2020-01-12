@@ -3,21 +3,20 @@ version: '3.7'
 services:
   api:
     build: ./api
-    command: bash -c "/home/node/app/wait-for-it.sh --timeout=0 mongo:27017 && npm run-script dev"
+    command: bash -c "/home/node/app/wait-for-it.sh --timeout=0 mongo:27017 && npm start"
     depends_on: [mongo]
-    env_file: ./dev.env
+    env_file: ./prod.env
     networks:
       - react-ab-network
     ports:
       - "8080:8080"
-      - "9229:9229"
     restart: 'no'
     volumes:
       - ./api/src:/home/node/app/src
       - /home/node/app/src/node_modules/
 
   mongo:
-    env_file: ./dev.env
+    env_file: ./prod.env
     expose:
       - "27017"
     image: mongo
@@ -27,7 +26,7 @@ services:
 
   mongo-express:
     depends_on: [mongo]
-    env_file: ./dev.env
+    env_file: ./prod.env
     image: mongo-express
     ports:
       - 8081:8081
