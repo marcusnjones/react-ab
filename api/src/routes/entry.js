@@ -10,30 +10,16 @@ router.post('/:entryId', (req, res, next) => {
 
 router.get('/:entryId', (req, res, next) => {
     const id = req.params.entryId;
-    let query = Entry.find({_id : id});
-
+    let query = Entry.findById(id);
     query
     .exec()
-    // .exec((err, usr) => {
-    //     if (err) {
-    //         console.log(err);
-    //     }
-    // })
     .then(entry => {
-        console.log(id);
-        res.status(200)
-        .json({
-            entry: entry,
-            message: 'GET /entry\' + req.params.entryId'
-        });
+        console.log(entry);
+        res.status(200).json(entry);
     })
     .catch(err => {
         console.log(err);
-        res.status(500).json({
-            error: {
-                message: err.message
-            }
-        });
+        res.status(500).json({error: err});
     });
 });
 
