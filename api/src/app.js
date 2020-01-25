@@ -37,7 +37,7 @@ app.use((req, res, next) => {
     res.append('Access-Control-Allow-Origin', ['*']);
     res.append('Access-Control-Allow-Headers', 'Content-Type');
     if (req.method === 'OPTIONS') {
-        res.append('Access-Control-Allow-Methods', 'PUT, POST, DELETE, GET');
+        res.append('Access-Control-Allow-Methods', 'PATCH, POST, DELETE, GET');
     }
     next();
 });
