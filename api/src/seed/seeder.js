@@ -5,10 +5,6 @@ const Entry = require('../models/entry');
 
 const data = JSON.parse(fs.readFileSync('./seed/MOCK_DATA.json'));
 
-function exit() {
-    mongoose.disconnect();
-}
-
 function seed() {
     let entries = data.map(entry => new Entry({
         _id: new mongoose.Types.ObjectId(),
@@ -30,8 +26,7 @@ function seed() {
             console.log('Entry created for: ' + entries[i].firstName + ' ' + entries[i].lastName);
             done++;
             if (done === entries.length) {
-                console.log('Seeding has completed!')
-                exit();
+                console.log('Seeding has completed!');
             }
         });
     }
