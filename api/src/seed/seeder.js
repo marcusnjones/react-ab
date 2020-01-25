@@ -23,7 +23,7 @@ function seed() {
     let done = 0;
     for (let i = 0; i < entries.length; i++) {
         entries[i].save((err, result) => {
-            console.log('Entry created for: ' + entries[i].firstName + ' ' + entries[i].lastName);
+            console.log('Entry created for:', entries[i].firstName + ' ' + entries[i].lastName);
             done++;
             if (done === entries.length) {
                 console.log('Seeding has completed!');
