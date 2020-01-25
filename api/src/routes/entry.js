@@ -10,11 +10,10 @@ router.post('/:entryId', (req, res, next) => {
 
 router.get('/:entryId', (req, res, next) => {
     const id = req.params.entryId;
-    let query = Entry.findById(id);
+    let query = Entry.findById(id).exec();
     query
-    .exec()
     .then(entry => {
-        console.log(entry);
+        console.log('GET /entry', entry);
         res.status(200).json(entry);
     })
     .catch(err => {
