@@ -33,10 +33,16 @@ router.post('/', (req, res, next) => {
 router.get('/:entryId', (req, res, next) => {
     const id = req.params.entryId;
     let query = Entry.findById(id).exec();
+
     query
     .then(entry => {
-        console.log('GET /entry', entry);
-        res.status(200).json(entry);
+        if (entry) {
+            console.log('GET /entry', entry);
+            res.status(200).json(entry);
+        } else {
+            console.log('Not found!');
+            res.status(200).json({});
+        }
     })
     .catch(err => {
         console.log(err);
@@ -46,9 +52,21 @@ router.get('/:entryId', (req, res, next) => {
 
 router.delete('/:entryId', (req, res, next) => {
     const id = req.params.entryId;
+    let query = Entry.deleteOne({_id : id}).exec();
 
-    res.status(200).json({
-        message: 'DELETE /entry' + req.params.entryId
+    query
+    .then(entry => {
+        // TODO: Log deleted entry to console
+        if (entry) {
+            res.status(200).json(entry);
+        } else {
+            console.log('Not found!');
+            res.status(200).json({});
+        }
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
     });
 });
 
