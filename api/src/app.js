@@ -14,7 +14,6 @@ mongoose.connect(mongoUrl, {
 mongoose.connection.on('connected', () => console.log('Mongoose has connected!'));
 mongoose.connection.on('disconnected', () => console.log('Mongoose has disconnected!'));
 
-const Entry = require('./models/entry');
 const Seeder = require('./seed/seeder');
 
 Seeder.seed();
