@@ -28,6 +28,7 @@
   "homepage": "https://github.com/marcusnjones/react-ab#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "debug": "^4.1.1",
     "express": "^4.17.1",
     "mongoose": "^5.8.3",
     "morgan": "^1.9.1"
