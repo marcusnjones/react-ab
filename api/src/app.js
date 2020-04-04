@@ -1,3 +1,4 @@
+const debug = require('debug')('express');
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
