@@ -11,7 +11,9 @@ mongoose.connect(mongoUrl, {
     useUnifiedTopology: true
 });
 
-const Entry = require('./models/entry');
+mongoose.connection.on('connected', () => console.log('Mongoose has connected!'));
+mongoose.connection.on('disconnected', () => console.log('Mongoose has disconnected!'));
+
 const Seeder = require('./seed/seeder');
 
 Seeder.seed();
@@ -34,7 +36,7 @@ app.use((req, res, next) => {
     res.append('Access-Control-Allow-Origin', ['*']);
     res.append('Access-Control-Allow-Headers', 'Content-Type');
     if (req.method === 'OPTIONS') {
-        res.append('Access-Control-Allow-Methods', 'PUT, POST, DELETE, GET');
+        res.append('Access-Control-Allow-Methods', 'PATCH, POST, DELETE, GET');
     }
     next();
 });
