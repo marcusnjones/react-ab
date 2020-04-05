@@ -28,7 +28,6 @@ if (app.get('env') == 'production') {
     app.use(morgan('dev'));
 }
 
-app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
