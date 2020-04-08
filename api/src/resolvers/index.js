@@ -7,7 +7,9 @@ module.exports = {
       const entries = await Entry
       .find();
       if (entries.length > 0) {
-        return entries;
+        return entries.map(entry => {
+          return { ...entry._doc }
+        });
       }
       else {
         return entries;
@@ -31,7 +33,6 @@ module.exports = {
       state: arg.entryInput.state,
       zip: arg.entryInput.zip
     });
-
     try {
       const createdEntry = await entry.save();
       console.log('Entry created for:', createdEntry.firstName + ' ' + createdEntry.lastName);
