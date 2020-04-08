@@ -23,6 +23,8 @@ services:
     networks:
       - react-ab-network
     restart: 'no'
+    volumes:
+      - ./mongo:/docker-entrypoint-initdb.d/
 
   mongo-express:
     depends_on: [mongo]
