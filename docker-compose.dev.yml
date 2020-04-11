@@ -48,21 +48,6 @@ services:
       - ./ui/src:/home/node/app/src
       - ./ui/public:/home/node/app/public
 
-  netdata:
-    cap_add:
-      - SYS_PTRACE
-    image: netdata/netdata
-    networks:
-      - react-ab-network
-    ports:
-      - 19999:19999
-    security_opt:
-      - apparmor:unconfined
-    volumes:
-      - /proc:/host/proc:ro
-      - /sys:/host/sys:ro
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-
 networks:
   react-ab-network:
     name: react-ab-network
