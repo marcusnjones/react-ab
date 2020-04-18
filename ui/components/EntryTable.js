@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
-import '../App.css';
 import EntryRow from './EntryRow';
 
 class EntryTable extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-
   render() {
     return (
       <table id="entries">

@@ -1,0 +1,28 @@
+import React, { Component } from 'react';
+
+class EntryRow extends Component {
+  render() {
+    return (
+      <tr>
+      <td>John</td>
+      <td>Doe</td>
+      <td>john.doe@email.com</td>
+      <td>(555) 555-5555</td>
+      <td>1234 Maple Street</td>
+      <td>Los Angeles</td>
+      <td>CA</td>
+      <td>90210</td>
+      <td>4/3/2020, 11:12:55 PM</td>
+      <td>
+        <ul className="action-list">
+          <li>Edit</li>
+          <li>Favorite</li>
+          <li>Delete</li>
+        </ul>
+      </td>
+    </tr>
+    )
+  }
+}
+
+export default EntryRow;

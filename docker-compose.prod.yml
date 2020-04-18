@@ -4,6 +4,7 @@ services:
   api:
     build: ./api
     command: bash -c "/home/node/app/wait-for-it.sh --timeout=0 mongo:27017 && npm start"
+    container_name: react-ab_api
     depends_on: [mongo]
     env_file: ./prod.env
     networks:
@@ -16,6 +17,7 @@ services:
       - /home/node/app/src/node_modules/
 
   mongo:
+    container_name: react-ab_mongo
     env_file: ./prod.env
     expose:
       - "27017"
@@ -27,6 +29,7 @@ services:
       - ./mongo:/docker-entrypoint-initdb.d/
 
   mongo-express:
+    container_name: react-ab_mongo-express
     depends_on: [mongo]
     env_file: ./prod.env
     image: mongo-express
@@ -37,15 +40,19 @@ services:
     restart: 'no'
 
   ui:
-    build: ./ui
+    build:
+      context: ./ui
+      dockerfile: Dockerfile.prod
+    container_name: react-ab_ui
     ports:
       - "3000:3000"
     networks:
       - react-ab-network
     restart: 'no'
     volumes:
-      - ./ui/src:/home/node/app/src
+      - ./ui:/home/node/app
       - ./ui/public:/home/node/app/public
+      - /home/node/app/.next
 
 networks:
   react-ab-network:

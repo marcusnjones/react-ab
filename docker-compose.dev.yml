@@ -41,7 +41,9 @@ services:
     restart: 'no'
 
   ui:
-    build: ./ui
+    build:
+      context: ./ui
+      dockerfile: Dockerfile.dev
     container_name: react-ab_ui
     ports:
       - "3000:3000"
@@ -49,8 +51,9 @@ services:
       - react-ab-network
     restart: 'no'
     volumes:
-      - ./ui/src:/home/node/app/src
+      - ./ui:/home/node/app
       - ./ui/public:/home/node/app/public
+      - /home/node/app/.next
 
 networks:
   react-ab-network:

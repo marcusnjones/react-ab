@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-import '../App.css';
+import Link from 'next/link';
 
 class AppLogo extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-
   render() {
     return (
       <div className="logo-container">
-        <h2 className="logo">react-ab</h2>
+        <Link href="/">
+          <h2 className="logo">react-ab</h2>
+        </Link>
       </div>
     );
   }
