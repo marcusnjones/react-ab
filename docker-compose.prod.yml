@@ -53,6 +53,7 @@ services:
       - ./ui:/home/node/app
       - ./ui/public:/home/node/app/public
       - /home/node/app/.next
+      - /home/node/app/node_modules
 
 networks:
   react-ab-network:
