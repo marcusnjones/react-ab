@@ -21,7 +21,6 @@ mongoose.connection.on('disconnected', () => console.log('Mongoose has disconnec
 const Seeder = require('./seed/seeder');
 Seeder.seed();
 
-
 if (app.get('env') == 'production') {
   app.use(morgan('common'));
   // app.use(morgan('common', { skip: function (req, res) { return res.statusCode < 400 }, stream: __dirname + '/../morgan.log' }));
