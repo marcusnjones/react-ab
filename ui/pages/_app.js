@@ -2,7 +2,7 @@ import App from 'next/app';
 import Page from '../components/Page';
 import '../styles/App.css';
 
-class MyApp extends App {
+class ReactAb extends App {
   render() {
     const { Component } = this.props;
 
@@ -14,4 +14,4 @@ class MyApp extends App {
   }
 }
 
-export default MyApp;
+export default ReactAb;
