@@ -16,7 +16,7 @@ This address book application is powered by MongoDB, Express, React (Next.js), N
 
 ### Node.js
 #### Installer
-[Download]((https://nodejs.org/)) Node.js using the installer.
+[Download](https://nodejs.org/) Node.js using the installer.
 
 #### Homebrew (Mac OS)
 Install Homebrew:
