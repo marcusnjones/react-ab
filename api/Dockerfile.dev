@@ -1,12 +1,12 @@
 FROM node:12
 
-WORKDIR /home/node/app
+WORKDIR /
 
 RUN curl -L 'https://raw.githubusercontent.com/marcusnjones/wait-for-it/master/wait-for-it.sh' > ./wait-for-it.sh
 
 RUN chmod +x ./wait-for-it.sh
 
-WORKDIR /home/node/app/src
+WORKDIR /home/node/app
 
 COPY ./src/package*.json ./
 

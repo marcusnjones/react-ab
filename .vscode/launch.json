@@ -7,8 +7,9 @@
       "request": "attach",
       "port": 9228,
       "address": "localhost",
+      "cwd": "${workspaceFolder}/api/src",
       "localRoot": "${workspaceFolder}/api/src",
-      "remoteRoot": "/home/node/app/src",
+      "remoteRoot": "/home/node/app",
       "protocol": "inspector",
       "restart": true
     },
@@ -18,8 +19,8 @@
       "request": "attach",
       "port": 9229,
       "address": "localhost",
-      "cwd": "${workspaceFolder}/ui",
-      "localRoot": "${workspaceFolder}/ui",
+      "cwd": "${workspaceFolder}/ui/src",
+      "localRoot": "${workspaceFolder}/ui/src",
       "remoteRoot": "/home/node/app",
       "skipFiles": ["<node_internals>/**"],
     },
@@ -27,8 +28,8 @@
       "name": "Local: Attach to UI (Next.js)",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceFolder}/ui/node_modules/.bin/next",
-      "cwd": "${workspaceFolder}/ui",
+      "program": "${workspaceFolder}/ui/src/node_modules/.bin/next",
+      "cwd": "${workspaceFolder}/ui/src",
       "restart": true,
       "console": "internalConsole"
     }

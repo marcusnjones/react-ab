@@ -2,7 +2,7 @@ FROM node:12
 
 WORKDIR /home/node/app
 
-COPY package*.json ./
+COPY ./src/package*.json ./
 
 RUN mkdir pages
 

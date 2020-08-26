@@ -5,7 +5,7 @@ services:
     build:
       context: ./api
       dockerfile: Dockerfile.prod
-    command: bash -c "/home/node/app/wait-for-it.sh --timeout=0 mongo:${MONGO_PORT} && npm start"
+    command: bash -c "/wait-for-it.sh --timeout=0 mongo:${MONGO_PORT} && npm start"
     container_name: react-ab_api
     depends_on: [mongo]
     env_file: ./prod.env
@@ -15,8 +15,8 @@ services:
       - "${API_PORT}:8080"
     restart: 'no'
     volumes:
-      - ./api/src:/home/node/app/src
-      - /home/node/app/src/node_modules/
+      - ./api/src:/home/node/app
+      - /home/node/app/node_modules/
 
   mongo:
     container_name: react-ab_mongo
@@ -52,8 +52,8 @@ services:
       - react-ab-network
     restart: 'no'
     volumes:
-      - ./ui:/home/node/app
-      - ./ui/public:/home/node/app/public
+      - ./ui/src:/home/node/app
+      - ./ui/src/public:/home/node/app/public
       - /home/node/app/.next
       - /home/node/app/node_modules
 
