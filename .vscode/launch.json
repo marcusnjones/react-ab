@@ -23,15 +23,6 @@
       "localRoot": "${workspaceFolder}/ui/src",
       "remoteRoot": "/home/node/app",
       "skipFiles": ["<node_internals>/**"],
-    },
-    {
-      "name": "Local: Attach to UI (Next.js)",
-      "type": "node",
-      "request": "launch",
-      "program": "${workspaceFolder}/ui/src/node_modules/.bin/next",
-      "cwd": "${workspaceFolder}/ui/src",
-      "restart": true,
-      "console": "internalConsole"
     }
   ]
 }
