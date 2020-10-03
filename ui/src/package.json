@@ -1,16 +1,31 @@
 {
   "name": "react-ab_ui",
   "version": "0.1.0",
-  "description": "",
+  "description": "UI service for react-ab",
   "main": "index.js",
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect=0.0.0.0:9229' next dev",
     "build": "next build",
     "start": "next start"
   },
-  "keywords": [],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcusnjones/react-ab.git"
+  },
+  "keywords": [
+    "nextjs",
+    "react"
+  ],
+  "author": {
+    "name": "Marcus N. Jones",
+    "email": "marcusnjones@gmail.com",
+    "url": "https://www.linkedin.com/in/marcusnjones/"
+  },
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcusnjones/react-ab/issues"
+  },
+  "homepage": "https://github.com/marcusnjones/react-ab#readme",
   "dependencies": {
     "next": "^9.3.5",
     "react": "^16.13.1",
