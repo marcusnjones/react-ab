@@ -2,25 +2,27 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Docker: Attach to API",
+      "name": "Docker: Attach to API (Node)",
       "type": "node",
       "request": "attach",
-      "port": 9229,
+      "port": 9228,
       "address": "localhost",
+      "cwd": "${workspaceFolder}/api/src",
       "localRoot": "${workspaceFolder}/api/src",
-      "remoteRoot": "/home/node/app/src",
+      "remoteRoot": "/home/node/app",
       "protocol": "inspector",
       "restart": true
     },
     {
-      "name": "Chrome: Launch UI",
-      "type": "chrome",
-      "request": "launch",
-      "url": "http://localhost:3000",
-      "webRoot": "${workspaceFolder}/ui/src",
-      "sourceMapPathOverrides": {
-        "webpack:///src/*": "${webRoot}/*"
-      }
+      "name": "Docker: Attach to UI (Next.js)",
+      "type": "node",
+      "request": "attach",
+      "port": 9229,
+      "address": "localhost",
+      "cwd": "${workspaceFolder}/ui/src",
+      "localRoot": "${workspaceFolder}/ui/src",
+      "remoteRoot": "/home/node/app",
+      "skipFiles": ["<node_internals>/**"],
     }
   ]
 }

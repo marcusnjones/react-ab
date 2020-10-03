@@ -1,0 +1,13 @@
+FROM node:12
+
+WORKDIR /home/node/app
+
+COPY ./src/package*.json ./
+
+RUN mkdir pages
+
+RUN npm install
+
+RUN npm run build
+
+CMD [ "npm", "run-script", "dev" ]

@@ -2,26 +2,28 @@ version: '3.7'
 
 services:
   api:
-    build: ./api
-    command: bash -c "/home/node/app/wait-for-it.sh --timeout=0 mongo:27017 && npm run-script dev"
+    build:
+      context: ./api
+      dockerfile: Dockerfile.dev
+    command: bash -c "/wait-for-it.sh --timeout=0 mongo:${MONGO_PORT} && npm run-script dev"
     container_name: react-ab_api
     depends_on: [mongo]
     env_file: ./dev.env
     networks:
       - react-ab-network
     ports:
-      - "8080:8080"
-      - "9229:9229"
+      - "${API_PORT}:8080"
+      - "${API_DEBUG_PORT}:9229"
     restart: 'no'
     volumes:
-      - ./api/src:/home/node/app/src
-      - /home/node/app/src/node_modules/
+      - ./api/src:/home/node/app
+      - /home/node/app/node_modules/
 
   mongo:
     container_name: react-ab_mongo
     env_file: ./dev.env
     expose:
-      - "27017"
+      - "${MONGO_PORT}"
     image: mongo
     networks:
       - react-ab-network
@@ -35,22 +37,27 @@ services:
     env_file: ./dev.env
     image: mongo-express
     ports:
-      - 8081:8081
+      - ${MONGO_EXPRESS_PORT}:8081
     networks:
       - react-ab-network
     restart: 'no'
 
   ui:
-    build: ./ui
+    build:
+      context: ./ui
+      dockerfile: Dockerfile.dev
     container_name: react-ab_ui
     ports:
-      - "3000:3000"
+      - "${UI_PORT}:3000"
+      - "${UI_DEBUG_PORT}:9229"
     networks:
       - react-ab-network
     restart: 'no'
     volumes:
-      - ./ui/src:/home/node/app/src
-      - ./ui/public:/home/node/app/public
+      - ./ui/src:/home/node/app
+      - ./ui/src/public:/home/node/app/public
+      - /home/node/app/.next
+      - /home/node/app/node_modules
 
 networks:
   react-ab-network:

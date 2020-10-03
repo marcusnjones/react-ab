@@ -1,1 +1,4 @@
 .vscode/react-ab.code-workspace
+.env
+dev.env
+prod.env

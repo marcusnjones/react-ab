@@ -1,20 +1,20 @@
 {
-  "name": "react-ab-api",
+  "name": "react-ab_ui",
   "version": "0.1.0",
-  "description": "API service for react-ab",
-  "main": "server.js",
+  "description": "UI service for react-ab",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "dev": "nodemon --inspect=0.0.0.0:9229 server.js"
+    "dev": "NODE_OPTIONS='--inspect=0.0.0.0:9229' next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/marcusnjones/react-ab.git"
   },
   "keywords": [
-    "node",
-    "express"
+    "nextjs",
+    "react"
   ],
   "author": {
     "name": "Marcus N. Jones",
@@ -27,14 +27,8 @@
   },
   "homepage": "https://github.com/marcusnjones/react-ab#readme",
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1",
-    "express-graphql": "^0.9.0",
-    "graphql": "^15.0.0",
-    "mongoose": "^5.8.3",
-    "morgan": "^1.9.1"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.2"
+    "next": "^9.3.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   }
 }
