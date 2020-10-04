@@ -1,6 +1,6 @@
 import App from 'next/app';
 import Page from '../components/Page';
-import '../styles/App.css';
+import GlobalStyle from '../components/styles/GlobalStyle'
 
 class ReactAb extends App {
   render() {
@@ -8,6 +8,7 @@ class ReactAb extends App {
 
     return (
       <Page>
+        <GlobalStyle />
         <Component />
       </Page>
     );

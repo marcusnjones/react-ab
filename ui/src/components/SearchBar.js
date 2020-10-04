@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import { HeaderContainer, HeaderContainerLabel } from '../components/styles/HeaderStyle';
 
 class SearchBar extends Component {
   render() {
     return (
-      <div className="search-container">
-        <label htmlFor="entry-search">Search:&nbsp;</label>
+      <HeaderContainer>
+        <HeaderContainerLabel htmlFor="entry-search">Search:&nbsp;</HeaderContainerLabel>
         <input id="entry-search" type="search" name="entry-search" autoFocus placeholder="Search for an entry…" />
-      </div>
+      </HeaderContainer>
     );
   }
 }
