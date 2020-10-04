@@ -1,11 +1,12 @@
 import SearchBar from './SearchBar';
 import AppLogo from './AppLogo';
+import { AppHeader } from '../components/styles/HeaderStyle';
 
 const Header = () => (
-  <header className="app-header">
+  <AppHeader>
     <SearchBar />
     <AppLogo />
-  </header>
+  </AppHeader>
 );
 
 export default Header;

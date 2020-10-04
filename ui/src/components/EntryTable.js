@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import EntryRow from './EntryRow';
+import Table from '../components/styles/EntryTableStyle';
 
 class EntryTable extends Component {
   render() {
     return (
-      <table id="entries">
+      <Table>
         <thead>
           <tr>
             <th scope="col">First Name</th>
@@ -19,11 +20,10 @@ class EntryTable extends Component {
             <th scope="col">Actions</th>
           </tr>
         </thead>
-
         <tbody>
           <EntryRow />
         </tbody>
-      </table>
+      </Table>
     );
   }
 }

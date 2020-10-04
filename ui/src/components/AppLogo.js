@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
+import { HeaderContainer, Logo } from '../components/styles/HeaderStyle';
 
 class AppLogo extends Component {
   render() {
     return (
-      <div className="logo-container">
+      <HeaderContainer>
         <Link href="/">
-          <h2 className="logo">react-ab</h2>
+          <Logo>react-ab</Logo>
         </Link>
-      </div>
+      </HeaderContainer>
     );
   }
 }
