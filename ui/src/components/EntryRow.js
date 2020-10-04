@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class EntryRow extends Component {
   render() {
     return (
-      <tr>
+    <tr>
       <td>John</td>
       <td>Doe</td>
       <td>john.doe@email.com</td>
@@ -12,7 +12,10 @@ class EntryRow extends Component {
       <td>Los Angeles</td>
       <td>CA</td>
       <td>90210</td>
-      <td>4/3/2020, 11:12:55 PM</td>
+      <td>
+        <span className="date">4/3/2020</span>
+        <span className="time">11:12:55 PM</span>
+      </td>
       <td>
         <ul className="action-list">
           <li>Edit</li>
