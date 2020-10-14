@@ -14,8 +14,7 @@ module.exports = buildSchema(`
     state: String
     zip: String
   }
-  input EntryInput {
-    _dateCreated: String!
+  input EntryCreateInput {
     firstName: String!
     lastName: String!
     email: String
@@ -25,11 +24,24 @@ module.exports = buildSchema(`
     state: String
     zip: String
   }
+  input EntryUpdateInput {
+    _id: ID!
+    firstName: String
+    lastName: String
+    email: String
+    phone: String
+    address: String
+    city: String
+    state: String
+    zip: String
+  }
   type RootQuery {
     entries: [Entry!]!
+    entry(id: String!): Entry!
   }
   type RootMutation {
-    createEntry(entryInput: EntryInput): Entry
+    createEntry(data: EntryCreateInput!): Entry
+    updateEntry(data: EntryUpdateInput!): Entry
   }
   schema {
     query: RootQuery
