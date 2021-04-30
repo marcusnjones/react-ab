@@ -64,6 +64,8 @@ brew install node
 3. Edit the `dev.env.sample` and `prod.env.sample` files and set the environment variables within to your desired values. Once finished, rename them to `dev.env` and `prod.env`. These are used for your Development and Production builds respectively. Note: The `NODE_ENV` variable is already set in these files and should **not** be changed.
 4. Navigate to the `.vscode/` folder and update the `react-ab.code-workspace.sample` file per the instructions within. Once finished, rename it to `react-ab.code-workspace`. This file is used to specify the location of your workspace.
 
+> :warning: The `MONGO_SERVICENAME` variable is set to `mongo` by default and **must match the name of the Mongo services in both Compose files**.
+
 ### Development
 
 Navigate to the project root and build the Compose file for Development:
