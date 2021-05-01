@@ -1,8 +1,6 @@
 const fs = require('fs');
 const mongoose = require('mongoose');
-
 const Entry = require('../models/entry');
-
 const data = JSON.parse(fs.readFileSync('./seed/MOCK_DATA.json'));
 
 function seed() {

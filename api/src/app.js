@@ -2,33 +2,32 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
-
 const graphqlHTTP = require('express-graphql');
-const graphqlSchema = require('./schema/index');
-const graphqlResolvers = require('./resolvers/index');
-
 const mongoose = require('mongoose');
 const mongoUrl = `mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.env.MONGO_INITDB_ROOT_PASSWORD}@${process.env.MONGO_SERVICENAME}:${process.env.MONGO_PORT}/${process.env.MONGO_INITDB_DATABASE}`;
+const seeder = require('./seed/seeder');
+const graphqlSchema = require('./schema/index');
+const graphqlResolvers = require('./resolvers/index');
 
 mongoose.connect(mongoUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
-
-mongoose.connection.on('connected', () => console.log('Mongoose has connected!'));
+mongoose.connection.on('connected', () => {
+  console.log('Mongoose has connected!');
+  // TODO: check first that no documents exist before attempting to seed db
+  seeder.seed();
+});
 mongoose.connection.on('disconnected', () => console.log('Mongoose has disconnected!'));
 
-const Seeder = require('./seed/seeder');
-Seeder.seed();
-
 if (app.get('env') == 'production') {
-  app.use(morgan('common'));
+  app.use(morgan('combined'));
   // app.use(morgan('common', { skip: function (req, res) { return res.statusCode < 400 }, stream: __dirname + '/../morgan.log' }));
 } else {
   app.use(morgan('dev'));
 }
 
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/graphql', graphqlHTTP({
@@ -45,9 +44,6 @@ app.use((req, res, next) => {
   }
   next();
 });
-
-// app.use('/api/entry', entryRoutes);
-// app.use('/api/entries', entriesRoutes);
 
 app.use((req, res, next) => {
   const error = new Error('Not found!');

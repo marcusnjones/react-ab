@@ -1,18 +1,22 @@
 import App from 'next/app';
+import{ ApolloProvider } from 'react-apollo';
 import Page from '../components/Page';
-import GlobalStyle from '../components/styles/GlobalStyle'
+import GlobalStyle from '../components/styles/GlobalStyle';
+import withData from '../lib/withData';
 
 class ReactAb extends App {
   render() {
-    const { Component } = this.props;
+    const { Component, apollo } = this.props;
 
     return (
-      <Page>
-        <GlobalStyle />
-        <Component />
-      </Page>
+      <ApolloProvider client={apollo}>
+        <Page>
+          <GlobalStyle />
+          <Component />
+        </Page>
+      </ApolloProvider>
     );
   }
 }
 
-export default ReactAb;
+export default withData(ReactAb);
