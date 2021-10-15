@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
-const bodyParser = require('body-parser');
 const graphqlHTTP = require('express-graphql');
 const mongoose = require('mongoose');
 const mongoUrl = `mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.env.MONGO_INITDB_ROOT_PASSWORD}@${process.env.MONGO_SERVICENAME}:${process.env.MONGO_PORT}/${process.env.MONGO_INITDB_DATABASE}`;
@@ -27,17 +26,17 @@ if (app.get('env') == 'production') {
   app.use(morgan('dev'));
 }
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 app.use('/graphql', graphqlHTTP({
   schema: graphqlSchema,
   rootValue: graphqlResolvers,
-  graphiql: (app.get('env') == 'production') ? false : true
+  graphiql: process.env.NODE_ENV === 'development'
 }));
 
 app.use((req, res, next) => {
-  res.append('Access-Control-Allow-Origin', ['*']);
+  res.append('Access-Control-Allow-Origin', '*');
   res.append('Access-Control-Allow-Headers', 'Content-Type');
   if (req.method === 'OPTIONS') {
     res.append('Access-Control-Allow-Methods', 'PATCH, POST, DELETE, GET');
