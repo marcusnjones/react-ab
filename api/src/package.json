@@ -27,7 +27,6 @@
   },
   "homepage": "https://github.com/marcusnjones/react-ab#readme",
   "dependencies": {
-    "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "express-graphql": "^0.9.0",
     "graphql": "^15.0.0",
