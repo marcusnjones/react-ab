@@ -89,5 +89,8 @@ module.exports = {
         console.log('[' + size + '] field(s) updated for: ' + id);
       });
     }
+  },
+  deleteEntry: async (arg) => {
+    // const id = arg.data._id;
   }
 };

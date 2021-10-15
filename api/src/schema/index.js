@@ -35,6 +35,9 @@ module.exports = buildSchema(`
     state: String
     zip: String
   }
+  input EntryDeleteInput {
+    _id: ID!
+  }
   type RootQuery {
     entries: [Entry!]!
     entry(id: String!): Entry!
@@ -42,6 +45,7 @@ module.exports = buildSchema(`
   type RootMutation {
     createEntry(data: EntryCreateInput!): Entry
     updateEntry(data: EntryUpdateInput!): Entry
+    deleteEntry(data: EntryDeleteInput!): Entry
   }
   schema {
     query: RootQuery
