@@ -1,6 +1,24 @@
 import React, { Component } from 'react';
 import EntryRow from './EntryRow';
 import Table from '../components/styles/EntryTableStyle';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
+
+const ALL_ITEMS_QUERY = gql`
+  query ALL_ITEMS_QUERY {
+    entries {
+      _id
+      _dateCreated
+      dateUpdated
+      firstName
+      lastName
+      email
+      address
+      state
+      zip
+    }
+  }
+`;
 
 class EntryTable extends Component {
   render() {
@@ -21,7 +39,11 @@ class EntryTable extends Component {
           </tr>
         </thead>
         <tbody>
-          <EntryRow />
+          <Query query={ALL_ITEMS_QUERY}>
+            {(payload) => {
+              return <EntryRow />
+            }}
+          </Query>
         </tbody>
       </Table>
     );
