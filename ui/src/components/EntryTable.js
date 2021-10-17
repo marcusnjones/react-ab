@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import EntryRow from './EntryRow';
 import Table from '../components/styles/EntryTableStyle';
-import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
+import {useQuery, gql} from '@apollo/client';
 
 const ALL_ITEMS_QUERY = gql`
   query ALL_ITEMS_QUERY {
@@ -20,7 +19,24 @@ const ALL_ITEMS_QUERY = gql`
   }
 `;
 
+/**
+ * Defines the class that represents the <table> that contains entries.
+ * @return {JSX.Element}
+ */
 class EntryTable extends Component {
+  /**
+   * Defines the method that displays entries.
+   * @return {EntryRow}
+   */
+  displayEntries() {
+    const {loading, error, data} = useQuery(ALL_ITEMS_QUERY);
+
+    if (loading) return 'Loading...';
+    if (error) return `Error! ${error.message}`;
+    return <EntryRow data={data.entries} />;
+  }
+
+  // eslint-disable-next-line require-jsdoc
   render() {
     return (
       <Table>
@@ -39,11 +55,8 @@ class EntryTable extends Component {
           </tr>
         </thead>
         <tbody>
-          <Query query={ALL_ITEMS_QUERY}>
-            {(payload) => {
-              return <EntryRow />
-            }}
-          </Query>
+          <EntryRow />
+          {/* { this.displayEntries() } */}
         </tbody>
       </Table>
     );

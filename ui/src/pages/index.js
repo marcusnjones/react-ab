@@ -1,6 +1,7 @@
 import EntryTable from '../components/EntryTable';
+import React from 'react';
 
-const Index = props => (
+const Index = () => (
   <EntryTable />
 );
 
