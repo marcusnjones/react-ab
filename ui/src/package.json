@@ -28,7 +28,6 @@
   "homepage": "https://github.com/marcusnjones/react-ab#readme",
   "dependencies": {
     "@apollo/client": "^3.2.2",
-    "apollo-boost": "^0.4.9",
     "graphql": "^15.3.0",
     "next": "^9.3.5",
     "next-with-apollo": "^5.1.0",
@@ -36,5 +35,11 @@
     "react-apollo": "^3.1.5",
     "react-dom": "^16.13.1",
     "styled-components": "^5.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.2.0"
   }
 }
