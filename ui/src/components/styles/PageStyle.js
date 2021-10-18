@@ -6,6 +6,7 @@ export const AppContainer = styled.div`
   width: 75vw;
 `;
 export const Main = styled.main`
-  height: 80vh;
+  height: auto;
   border: 1px solid #e1e4e8;
+  margin-bottom: 56px;
 `;

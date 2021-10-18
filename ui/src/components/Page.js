@@ -25,4 +25,5 @@ class Page extends Component {
 Page.propTypes = {
   children: PropTypes.array,
 };
+
 export default Page;
