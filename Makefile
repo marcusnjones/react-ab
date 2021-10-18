@@ -30,7 +30,7 @@ list_allowed_args := name inventory
 mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
 current_dir := $(notdir $(patsubst %/,%,$(dir $(mkfile_path))))
 
-.PHONY: list help dev-build dev-build-force prod-build prod-build-force dev-up dev-up-force prod-up prod-up-force dev-run dev-stop prod-run prod-stop dev-run-force prod-run-force
+.PHONY: list help dev-build dev-build-force prod-build prod-build-force dev-up dev-up-force prod-up prod-up-force dev-run dev-down prod-run prod-down dev-run-force prod-run-force
 
 help:
 	@echo "Make commands for provisioning $(container_name)"
@@ -54,7 +54,7 @@ dev-run: dev-build dev-up
 
 dev-run-force: dev-build-force dev-up-force
 
-dev-stop:
+dev-down:
 	docker-compose -f docker-compose.dev.yml down --remove-orphans
 
 prod-build:
@@ -73,5 +73,5 @@ prod-run: prod-build prod-up
 
 prod-run-force: prod-build-force prod-up-force
 
-prod-stop:
+prod-down:
 	docker-compose -f docker-compose.dev.yml down --remove-orphans
