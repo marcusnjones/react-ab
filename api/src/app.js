@@ -7,6 +7,7 @@ const mongoUrl = `mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.
 const seeder = require('./seed/seeder');
 const graphqlSchema = require('./schema/index');
 const graphqlResolvers = require('./resolvers/index');
+const cors = require('cors');
 
 mongoose.connect(mongoUrl, {
   useNewUrlParser: true,
@@ -28,6 +29,8 @@ if (app.get('env') == 'production') {
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+app.use(cors());
 
 app.use('/graphql', graphqlHTTP({
   schema: graphqlSchema,
