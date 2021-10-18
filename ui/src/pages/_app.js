@@ -26,7 +26,8 @@ const apolloClient = new ApolloClient({
       if (networkError) console.log(`[Network error]: ${networkError}`);
     }),
     new HttpLink({
-      uri: 'http://react-ab_api:8080/graphql', fetch,
+      uri: 'http://localhost:8080/graphql', fetch,
+      // uri: 'http://react-ab_api:8080/graphql', fetch,
       credentials: 'omit',
     }),
   ]),
