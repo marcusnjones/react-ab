@@ -17,6 +17,7 @@ services:
     volumes:
       - ./api/src:/home/node/app
       - /home/node/app/node_modules/
+      - /home/node/app/errors/
 
   mongo:
     container_name: react-ab_mongo
