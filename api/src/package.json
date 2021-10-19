@@ -30,11 +30,15 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-graphql": "^0.9.0",
+    "file-stream-rotator": "^0.5.7",
     "graphql": "^15.0.0",
     "mongoose": "^5.8.3",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "stream": "^0.0.2"
   },
   "devDependencies": {
+    "eslint": "^8.0.1",
+    "eslint-config-google": "^0.14.0",
     "nodemon": "^2.0.2"
   }
 }
