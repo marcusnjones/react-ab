@@ -9,6 +9,16 @@ import {
  * @return {JSX.Element}
  */
 class SearchBar extends Component {
+  /**
+   * Clears the search input when esc is hit.
+   */
+  clearSearch() {
+    const search = document.getElementById('entry-search');
+    search.onkeyup = (e) => {
+      if (e.key === 'Escape') search.value = '';
+    };
+  }
+
   // eslint-disable-next-line require-jsdoc
   render() {
     return (
@@ -20,7 +30,9 @@ class SearchBar extends Component {
           type="search"
           name="entry-search"
           placeholder="Search for an entry..."
-          autoFocus />
+          autoFocus
+          onKeyUp={this.clearSearch}
+        />
       </HeaderContainer>
     );
   }
