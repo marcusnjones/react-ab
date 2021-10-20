@@ -30,7 +30,7 @@ function displayEntries() {
 
   if (loading) return <tr><td colSpan="10">Loading...</td></tr>;
   if (error) return <tr><td colSpan="10">Error! {error.message}</td></tr>;
-  if (data === undefined) return <tr><td colSpan="10">Undefined!</td></tr>;
+  if (data.entries.length === 0) return <tr><td colSpan="10">No entries found!</td></tr>;
 
   return (
     data.entries.map((entry) => {
