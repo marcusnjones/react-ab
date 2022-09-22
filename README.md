@@ -69,13 +69,13 @@ brew install node
 Navigate to the project root and build the Compose file for Development:
 
 ```console
-docker-compose -f docker-compose.dev.yml build
+make dev-build
 ```
 
 Bring up the Compose file for Development:
 
 ```console
-docker-compose -f docker-compose.dev.yml up
+make dev-up
 ```
 
 Navigate to `localhost:${UI_PORT}` (where `${UI_PORT}` is the value that you set in your `.env` file) in your browser to view the application.
@@ -85,13 +85,13 @@ Navigate to `localhost:${UI_PORT}` (where `${UI_PORT}` is the value that you set
 Navigate to the project root and build the Compose file for Production:
 
 ```console
-docker-compose -f docker-compose.prod.yml build
+make prod-build
 ```
 
 Bring up the Compose file for Production:
 
 ```console
-docker-compose -f docker-compose.prod.yml up
+make prod-up
 ```
 
 Navigate to `localhost:${UI_PORT}` (where `${UI_PORT}` is the value that you set in your `.env` file) in your browser to view the application.
