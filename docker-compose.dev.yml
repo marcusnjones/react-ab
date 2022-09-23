@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.8'
 
 services:
   api:
@@ -24,23 +24,23 @@ services:
     env_file: ./dev.env
     expose:
       - "${MONGO_PORT}"
-    image: mongo
+    image: mongo:6.0.1
     networks:
       - react-ab-network
     restart: 'no'
     volumes:
-      - ./mongo:/docker-entrypoint-initdb.d/
+      - ./mongo/init.sh:/docker-entrypoint-initdb.d/init.sh:ro
 
   mongo-express:
     container_name: react-ab_mongo-express
     depends_on: [mongo]
     env_file: ./dev.env
-    image: mongo-express
+    image: ghcr.io/blackthornyugen/mongo-express-docker:v1.0.0 # https://github.com/mongo-express/mongo-express/issues/887
     ports:
       - ${MONGO_EXPRESS_PORT}:8081
     networks:
       - react-ab-network
-    restart: 'no'
+    restart: 'always'
 
   ui:
     build:

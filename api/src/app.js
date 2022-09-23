@@ -11,7 +11,7 @@ const seed = require('./seed/seeder').seed;
 const graphqlSchema = require('./schema/index');
 const graphqlResolvers = require('./resolvers/index');
 
-mongoose.connect(`mongodb://${process.env.MONGO_SERVICENAME}:${process.env.MONGO_PORT}/${process.env.MONGO_INITDB_DATABASE}`, {
+mongoose.connect(`mongodb://${process.env.MONGO_SERVICENAME}:${process.env.MONGO_PORT}/${process.env.ME_CONFIG_MONGODB_AUTH_DATABASE}`, {
   auth: {
     user: `${process.env.MONGO_INITDB_ROOT_USERNAME}`,
     password: `${process.env.MONGO_INITDB_ROOT_PASSWORD}`,
@@ -20,7 +20,6 @@ mongoose.connect(`mongodb://${process.env.MONGO_SERVICENAME}:${process.env.MONGO
   useUnifiedTopology: true,
 });
 mongoose.connection.on('connected',
-    // TODO: Check first that no documents exist before attempting to seed db
     () => console.log('Mongoose has connected!'), seed(),
 );
 mongoose.connection.on('disconnected',
