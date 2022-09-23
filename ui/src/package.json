@@ -28,13 +28,14 @@
   "homepage": "https://github.com/marcusnjones/react-ab#readme",
   "dependencies": {
     "@apollo/client": "^3.4.16",
-    "graphql": "^15.3.0",
-    "next": "^12.1.0",
+    "graphql": "^14.3.1",
+    "next": "^9.3.5",
     "next-with-apollo": "^5.2.1",
     "react": "^16.14.0",
     "react-apollo": "^3.1.5",
     "react-dom": "^16.14.0",
-    "styled-components": "^5.3.1"
+    "react-is": "^18.2.0",
+    "styled-components": "5.3.5"
   },
   "devDependencies": {
     "eslint": "^7.32.0",
