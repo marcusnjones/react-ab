@@ -29,7 +29,7 @@
   "dependencies": {
     "@apollo/client": "^3.4.16",
     "graphql": "^14.3.1",
-    "next": "^9.3.5",
+    "next": "^13.0.2",
     "next-with-apollo": "^5.2.1",
     "react": "^16.14.0",
     "react-apollo": "^3.1.5",
