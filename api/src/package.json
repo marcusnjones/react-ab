@@ -28,7 +28,7 @@
   "homepage": "https://github.com/marcusnjones/react-ab#readme",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "express-graphql": "^0.9.0",
     "file-stream-rotator": "^0.5.7",
     "graphql": "^15.0.0",
